@@ -17,11 +17,11 @@ class color:
 
 helpText = \
 f'''This game about discovering dungeons. Commands that you can use in the command line:
-{color.purple}left, right, up, down{color.yellow} ->{color.cyan} to move{color.end}
-{color.purple}pos{color.yellow} ->{color.cyan} your position{color.end}
-{color.purple}stats{color.yellow} ->{color.cyan} self info{color.end}
-{color.purple}comm{color.yellow} ->{color.cyan} all commands{color.end}
-{color.purple}map{color.yellow} ->{color.cyan} map{color.end} ({color.green}X{color.end} - {color.cyan}you{color.end}, {color.red}*{color.end} - {color.cyan}undiscovered rooms{color.end}, {color.blue}о{color.end} - {color.cyan}discovered rooms{color.end})
+{color.purple}left (l), right (r), up (u), down (d){color.yellow} ->{color.cyan} to move{color.end}
+{color.purple}pos (p){color.yellow} ->{color.cyan} your position{color.end}
+{color.purple}stats (s){color.yellow} ->{color.cyan} self info{color.end}
+{color.purple}comm (c){color.yellow} ->{color.cyan} all commands{color.end}
+{color.purple}map (m){color.yellow} ->{color.cyan} map{color.end} ({color.green}X{color.end} - {color.cyan}you{color.end}, {color.red}*{color.end} - {color.cyan}undiscovered rooms{color.end}, {color.blue}о{color.end} - {color.cyan}discovered rooms{color.end})
 --------------------------Special commands---------------------------
 {color.purple}attack(a){color.yellow} ->{color.cyan} attack the enemy
 {color.purple}run(r){color.yellow} ->{color.cyan} run from the enemy into a random room
@@ -31,11 +31,11 @@ f'''This game about discovering dungeons. Commands that you can use in the comma
 
 commText = \
     f'''---------------------------Common commands---------------------------:
-{color.purple}left, right, up, down{color.yellow} ->{color.cyan} to move{color.end}
-{color.purple}pos{color.yellow} ->{color.cyan} your position{color.end}
-{color.purple}stats{color.yellow} ->{color.cyan} self info{color.end}
-{color.purple}comm{color.yellow} ->{color.cyan} all commands{color.end}
-{color.purple}map{color.yellow} ->{color.cyan} map{color.end} ({color.green}X{color.end} - {color.cyan}you{color.end}, {color.red}*{color.end} - {color.cyan}undiscovered rooms{color.end}, {color.blue}о{color.end} - {color.cyan}discovered rooms{color.end})
+{color.purple}left (l), right (r), up (u), down (d){color.yellow} ->{color.cyan} to move{color.end}
+{color.purple}pos (p){color.yellow} ->{color.cyan} your position{color.end}
+{color.purple}stats (s){color.yellow} ->{color.cyan} self info{color.end}
+{color.purple}comm (c){color.yellow} ->{color.cyan} all commands{color.end}
+{color.purple}map (m){color.yellow} ->{color.cyan} map{color.end} ({color.green}X{color.end} - {color.cyan}you{color.end}, {color.red}*{color.end} - {color.cyan}undiscovered rooms{color.end}, {color.blue}о{color.end} - {color.cyan}discovered rooms{color.end})
 --------------------------Special commands---------------------------
 {color.purple}attack(a){color.yellow} ->{color.cyan} attack the enemy
 {color.purple}run(r){color.yellow} ->{color.cyan} run from the enemy into a random room
@@ -518,19 +518,19 @@ and{color.blue} completed {Game.stagesCompleted} stages.\n{color.purple}Your sco
             print(f"{color.red}You can't go there, there is no door{color.end}")
     
     def command(self, input):
-        if(input == 'left'):
+        if(input == 'left' or input == 'l'):
             self.goLeft()
-        elif(input == 'right'):
+        elif(input == 'right' or input == 'r'):
             self.goRight()
-        elif(input == 'up'):
+        elif(input == 'up' or input == 'u'):
             self.goUp()
-        elif(input == 'down'):
+        elif(input == 'down' or input == 'd'):
             self.goDown()
-        elif(input == 'pos'):
+        elif(input == 'pos' or input == 'p'):
             self.whereAmI()
-        elif(input == 'map'):
+        elif(input == 'map' or input == 'm'):
             print(self.map)
-        elif(input == 'stats'):
+        elif(input == 'stats' or input == 's'):
             print(f'{color.end}' + '-' * 20 + 'Stats' + '-' * 20)
 
             if(Game.health == 100):
@@ -553,9 +553,9 @@ and{color.blue} completed {Game.stagesCompleted} stages.\n{color.purple}Your sco
 {color.blue}Defense: {Game.armor}                {color.darkcyan}Shield: {self.shield} ({shieldDefense} defense){color.end}'''
             print(statsText)
 
-        elif(input == 'help'):
+        elif(input == 'help' or input == 'h'):
             print(helpText)
-        elif(input == 'comm'):
+        elif(input == 'comm' or input == 'c'):
             print(commText)
         else:
             print(f"{color.red}Wrong command!{color.end}")
